@@ -1,9 +1,6 @@
 function generateRandomValue(minValue:number, maxValue:number):number{
-    var random = Math.random();
-    
-    //TODO: use random to generate a number between min and max
-
-    return random;
+    //TODO: use random to generate a number between min and ma
+    return Math.floor(Math.random() * (maxValue - minValue + 1) + minValue);
 }
 
 
@@ -14,6 +11,12 @@ function changePlayers():void{
 
     //swap from player to player by comparing current name to player names
     //set currentPlayerName to the next player
+    if (currentPlayerName == player1Name) {
+        (<HTMLElement>document.getElementById("current")).innerText = player2Name //switches from player 1 to player 2
+    }
+    else{
+        (<HTMLElement>document.getElementById("current")).innerText = player1Name //switches form player 2 to player 1
+    }
 }
 
 window.onload = function(){
@@ -27,9 +30,14 @@ window.onload = function(){
 
 function createNewGame(){
     //set player 1 and player 2 scores to 0
-
+    
     //verify each player has a name
     //if both players don't have a name display error
+    let player1Name = (<HTMLInputElement>document.getElementById("player1")).value;
+    let player2Name = (<HTMLInputElement>document.getElementById("player2")).value;
+    if (player1Name == "" || player2Name == "") {
+        alert("Please enter a name!");
+    }
 
     //if both players do have a name start the game!
     (<HTMLElement>document.getElementById("turn")).classList.add("open");
