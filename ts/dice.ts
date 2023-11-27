@@ -1,5 +1,5 @@
 function generateRandomValue(minValue:number, maxValue:number):number{
-    //TODO: use random to generate a number between min and ma
+    //TODO: use random to generate a number between min and max
     return Math.floor(Math.random() * (maxValue - minValue + 1) + minValue);
 }
 
