@@ -83,7 +83,7 @@ function rollDie():void{
 
 function holdDie():void{
     //get the current turn total
-    let currentTotal = parseInt(document.getElementById("total").value);
+    let currentTotal = parseInt(document.getElementById("total").textContent);
     //determine who the current player is
     let currentPlayerName = (<HTMLElement>document.getElementById("current")).innerText;
     let player1Name = (<HTMLInputElement>document.getElementById("player1")).value;
@@ -91,20 +91,17 @@ function holdDie():void{
 
     //add the current turn total to the player's total score
     if (currentPlayerName === player1Name) {
-        let score1 = parseInt(document.getElementById("score1").value);
+        let score1 = parseInt(document.getElementById("score1").textContent);
         score1 += currentTotal;
-        document.getElementById("score1").value = score1.toString();
-    //reset the turn total to 0
-        currentTotal = 0;
+        document.getElementById("score1").textContent = score1.toString();
       } 
       else if (currentPlayerName === player2Name){
-        let score2 = parseInt(document.getElementById("score2").value);
+        let score2 = parseInt(document.getElementById("score2").textContent);
         score2 += currentTotal;
-        document.getElementById("score2").value = score2.toString();
-    //reset the turn total to 0
-      currentTotal = 0;
+        document.getElementById("score2").textContent = score2.toString();
       }
-
+      //reset the turn total to 0
+      currentTotal = 0;
     //change players
     changePlayers();
 }
