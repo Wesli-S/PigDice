@@ -57,16 +57,19 @@ function holdDie() {
     let player2Name = document.getElementById("player2").value;
     if (currentPlayerName === player1Name) {
         let score1 = parseInt(document.getElementById("score1").value);
-        currentTotal += score1;
+        score1 += currentTotal;
         let currScore1 = document.getElementById("score1");
         currScore1.value = score1.toString();
     }
     else if (currentPlayerName === player2Name) {
         let score2 = parseInt(document.getElementById("score2").value);
-        currentTotal += score2;
+        score2 += currentTotal;
         let currScore2 = document.getElementById("score2");
         currScore2.value = score2.toString();
     }
-    currentTotal = 0;
+    let totalTxtBox = document.getElementById("total");
+    totalTxtBox.value = "0";
+    let dieTxtBox = document.getElementById("die");
+    dieTxtBox.value = "0";
     changePlayers();
 }
