@@ -95,14 +95,15 @@ function holdDie():void{
     let player2Name = (<HTMLInputElement>document.getElementById("player2")).value;
 
     //add the current turn total to the player's total score
+    let score1 = parseInt((document.getElementById("score1") as HTMLInputElement).value);
+    let score2 = parseInt((document.getElementById("score2")as HTMLInputElement).value);
+
     if (currentPlayerName === player1Name) {
-        let score1 = parseInt((document.getElementById("score1") as HTMLInputElement).value);
         score1 += currentTotal;
         let currScore1: HTMLInputElement = document.getElementById("score1") as HTMLInputElement;
         currScore1.value = score1.toString();
       } 
       else if (currentPlayerName === player2Name){
-        let score2 = parseInt((document.getElementById("score2")as HTMLInputElement).value);
         score2 += currentTotal;
         let currScore2: HTMLInputElement = document.getElementById("score2") as HTMLInputElement;
         currScore2.value = score2.toString();
@@ -115,4 +116,13 @@ function holdDie():void{
         dieTxtBox.value = "0";
         //change players
         changePlayers();
+
+
+        //if score reaches 100
+        if (score1 >= 100) {
+            alert("Player " + player1Name + " wins!");
+        }
+        else if (score2 >= 100) {
+            alert("Player " + player2Name + " wins!");
+        }
 }

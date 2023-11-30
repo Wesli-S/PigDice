@@ -55,14 +55,14 @@ function holdDie() {
     let currentPlayerName = document.getElementById("current").innerText;
     let player1Name = document.getElementById("player1").value;
     let player2Name = document.getElementById("player2").value;
+    let score1 = parseInt(document.getElementById("score1").value);
+    let score2 = parseInt(document.getElementById("score2").value);
     if (currentPlayerName === player1Name) {
-        let score1 = parseInt(document.getElementById("score1").value);
         score1 += currentTotal;
         let currScore1 = document.getElementById("score1");
         currScore1.value = score1.toString();
     }
     else if (currentPlayerName === player2Name) {
-        let score2 = parseInt(document.getElementById("score2").value);
         score2 += currentTotal;
         let currScore2 = document.getElementById("score2");
         currScore2.value = score2.toString();
@@ -72,4 +72,10 @@ function holdDie() {
     let dieTxtBox = document.getElementById("die");
     dieTxtBox.value = "0";
     changePlayers();
+    if (score1 >= 100) {
+        alert("Player " + player1Name + " wins!");
+    }
+    else if (score2 >= 100) {
+        alert("Player " + player2Name + " wins!");
+    }
 }
