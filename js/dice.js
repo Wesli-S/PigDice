@@ -40,30 +40,32 @@ function rollDie() {
     let dieRoll = generateRandomValue(1, 6);
     if (dieRoll == 1) {
         changePlayers();
+        currTotal = 0;
     }
-    currTotal = 0;
     if (dieRoll > 1) {
         currTotal += dieRoll;
     }
-    let roll = document.getElementById("roll");
-    roll.innerText = dieRoll.toString();
+    let currRollTxtBox = document.getElementById("die");
+    currRollTxtBox.value = dieRoll.toString();
     let total = document.getElementById("total");
     total.value = currTotal.toString();
 }
 function holdDie() {
-    let currentTotal = parseInt(document.getElementById("total").textContent);
+    let currentTotal = parseInt(document.getElementById("total").value);
     let currentPlayerName = document.getElementById("current").innerText;
     let player1Name = document.getElementById("player1").value;
     let player2Name = document.getElementById("player2").value;
     if (currentPlayerName === player1Name) {
-        let score1 = parseInt(document.getElementById("score1").textContent);
-        score1 += currentTotal;
-        document.getElementById("score1").textContent = score1.toString();
+        let score1 = parseInt(document.getElementById("score1").value);
+        currentTotal += score1;
+        let currScore1 = document.getElementById("score1");
+        currScore1.value = score1.toString();
     }
     else if (currentPlayerName === player2Name) {
-        let score2 = parseInt(document.getElementById("score2").textContent);
-        score2 += currentTotal;
-        document.getElementById("score2").textContent = score2.toString();
+        let score2 = parseInt(document.getElementById("score2").value);
+        currentTotal += score2;
+        let currScore2 = document.getElementById("score2");
+        currScore2.value = score2.toString();
     }
     currentTotal = 0;
     changePlayers();
